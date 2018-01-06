@@ -60,7 +60,7 @@ module.exports = {
       var userFreezedBTCBalanceInDb = parseFloat(user.FreezedBTCbalance).toFixed(8);
       var userIdInDb = parseFloat(user.id).toFixed(8);
       var userBCHBalanceInDb = parseFloat(user.BCHbalance).toFixed(8);
-     
+
       if (userBidAmountBTC >= userBTCBalanceInDb) {
         return res.json({
           "message": "You have insufficient BTC Balance",

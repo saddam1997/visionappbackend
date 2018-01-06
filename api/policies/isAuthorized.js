@@ -5,7 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Policies
  */
 
-module.exports = function (req, res, next) {
+module.exports = function(req, res, next) {
   var token;
 
   if (req.headers && req.headers.authorization) {
@@ -18,7 +18,9 @@ module.exports = function (req, res, next) {
         token = credentials;
       }
     } else {
-      return res.json(401, {err: 'Format is Authorization: Bearer [token]'});
+      return res.json(401, {
+        err: 'Format is Authorization: Bearer [token]'
+      });
     }
   } else if (req.param('token')) {
     token = req.param('token');
@@ -26,11 +28,15 @@ module.exports = function (req, res, next) {
     delete req.query.token;
   } else {
     console.log('No Authorization header was found');
-    return res.json(401, {err: 'No Authorization header was found'});
+    return res.json(401, {
+      err: 'No Authorization header was found'
+    });
   }
 
-  jwToken.verify(token, function (err, token) {
-    if (err) return res.json(401, {err: 'Invalid Token!'});
+  jwToken.verify(token, function(err, token) {
+    if (err) return res.json(401, {
+      err: 'Invalid Token!'
+    });
     req.token = token; // This is the decrypted token or the payload you provided
     next();
   });

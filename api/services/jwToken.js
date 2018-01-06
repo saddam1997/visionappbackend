@@ -15,7 +15,7 @@ module.exports.issue = function(payload) {
     payload,
     tokenSecret, // Token Secret that we sign it with
     {
-      expiresIn : 60 * 60 *60 *60 // Token Expire time
+      expiresIn: 60 * 60 * 60 * 60 // Token Expire time
     }
   );
 };

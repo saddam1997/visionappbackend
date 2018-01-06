@@ -79,7 +79,7 @@ module.exports = {
             var userFreezedBCHBalanceInDb = parseFloat(user.FreezedBCHbalance).toFixed(8);
             var userIdInDb = parseFloat(user.id).toFixed(8);
             var minimumAmountBCHToAsk = 0.08;
-        
+
             if (userAskAmountBCH >= userBCHBalanceInDb) {
               return res.json({
                 "message": "You have insufficient BCH Balance",
