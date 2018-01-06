@@ -34,10 +34,10 @@ var companyBCHAccount = sails.config.company.companyBCHAccount;
 var companyBCHAccountAddress = sails.config.company.companyBCHAccountAddress;
 
 var transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: sails.config.company.service,
   auth: {
-    user: 'wallet.bcc@gmail.com',
-    pass: 'boosters@123'
+    user: sails.config.company.email,
+    pass: sails.config.company.password
   }
 });
 
@@ -163,30 +163,6 @@ module.exports = {
       }
     });
   },
-  sendEmail: function(req, res, next) {
-    console.log("Enter into sendEmailTest::: " + JSON.stringify(req.body));
-    var transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'wallet.bcc@gmail.com',
-        pass: 'boosters@123'
-      }
-    });
-    var mailOptions = {
-      from: 'wallet.bcc@gmail.com',
-      to: 'bccwalletsuport@gmail.com',
-      subject: 'Sending Email using Node.js',
-      text: 'That was easy!'
-    };
-    transporter.sendMail(mailOptions, function(error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-        res.json(200, "Message Send Succesfully");
-      }
-    });
-  },
   sentOtpToEmailForgotPassword: function(req, res, next) {
 
     console.log("Enter into sentOtpToEmail");
@@ -213,20 +189,13 @@ module.exports = {
           statusCode: 401
         });
       }
-      var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'wallet.bcc@gmail.com',
-          pass: 'boosters@123'
-        }
-      });
       var newCreatedPassword = Math.floor(100000 + Math.random() * 900000);
       console.log("newCreatedPassword :: " + newCreatedPassword);
       var mailOptions = {
-        from: 'wallet.bcc@gmail.com',
+        from: sails.config.company.email,
         to: userMailId,
         subject: 'Please reset your password',
-        text: 'We heard that you lost your BccPay password. Sorry about that! ' +
+        text: 'We heard that you lost your VCNPay password. Sorry about that! ' +
           '\n But don’t worry! You can use this otp reset your password ' + newCreatedPassword
       };
       transporter.sendMail(mailOptions, function(error, info) {
@@ -498,20 +467,14 @@ module.exports = {
             statusCode: 401
           });
         } else {
-          var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-              user: 'wallet.bcc@gmail.com',
-              pass: 'boosters@123'
-            }
-          });
+
           var newCreatedPassword = Math.floor(100000 + Math.random() * 900000);
           console.log("newCreatedPassword :: " + newCreatedPassword);
           var mailOptions = {
-            from: 'wallet.bcc@gmail.com',
+            from: sails.config.company.email,
             to: userMailId,
             subject: 'Please reset your spending password',
-            text: 'We heard that you lost your BccPay spending password. Sorry about that! ' +
+            text: 'We heard that you lost your VCNPay spending password. Sorry about that! ' +
               '\n But don’t worry! You can use this otp reset your password ' + newCreatedPassword
           };
           transporter.sendMail(mailOptions, function(error, info) {
@@ -689,7 +652,7 @@ module.exports = {
       var createNewOTP = Math.floor(100000 + Math.random() * 900000);
       console.log("createNewOTP :: " + createNewOTP);
       var mailOptions = {
-        from: 'wallet.bcc@gmail.com',
+        from: sails.config.company.email,
         to: user.email,
         subject: 'Please verify your email',
         text: 'Your otp to varify email ' + createNewOTP

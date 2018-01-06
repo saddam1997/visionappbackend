@@ -9,8 +9,7 @@ var clientBTC = new bitcoinBTC.Client({
   user: 'test',
   pass: 'test123'
 });
-var companyBTCAccount = "company.bccpay@gmail.com";
-var companyBTCAccountAddress = "1Jhz2FLbqgKZS8TgdmadtmngJCbz4iNhih";
+var companyBTCAccount = "admin@@visionex.io ";
 
 //BCH Wallet Details
 var bitcoinBCH = require('bitcoin');
@@ -20,8 +19,7 @@ var clientBCH = new bitcoinBCH.Client({
   user: 'test',
   pass: 'test123'
 });
-var companyBCHAccount = "company.bccpay@gmail.com";
-var companyBCHAccountAddress = "1CLZqTddQ358qEno2UhmzYkaGSuBGJDZrq";
+var companyBCHAccount = "admin@@visionex.io ";
 
 module.exports.cron = {
   searchBidJob: {
