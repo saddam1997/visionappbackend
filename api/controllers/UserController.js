@@ -270,9 +270,9 @@ module.exports = {
             statusCode: 401
           });
         } else {
-          console.log("OTP is varified succesfully");
+          console.log("OTP is verified succesfully");
           res.json(200, {
-            "message": "OTP is varified succesfully",
+            "message": "OTP is verified succesfully",
             "userMailId": userMailId,
             statusCode: 200
           });
@@ -552,9 +552,9 @@ module.exports = {
             statusCode: 401
           });
         } else {
-          console.log("OTP is varified succesfully");
+          console.log("OTP is verified succesfully");
           res.json(200, {
-            "message": "OTP for spending passoword is varified succesfully",
+            "message": "OTP for spending passoword is verified succesfully",
             "userMailId": userMailId,
             statusCode: 200
           });
@@ -655,7 +655,7 @@ module.exports = {
         from: sails.config.company.email,
         to: user.email,
         subject: 'Please verify your email',
-        text: 'Your otp to varify email ' + createNewOTP
+        text: 'Your otp to verify email ' + createNewOTP
       };
       transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
@@ -727,7 +727,7 @@ module.exports = {
             statusCode: 401
           });
         } else {
-          console.log("OTP is varified succesfully");
+          console.log("OTP is verified succesfully");
           User.update({
               email: userMailId
             }, {
