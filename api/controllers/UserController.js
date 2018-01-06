@@ -42,7 +42,6 @@ var transporter = nodemailer.createTransport({
 });
 
 module.exports = {
-
   createNewUser: function(req, res) {
     console.log("Enter into createNewUser :: ");
     var useremailaddress = req.body.email;

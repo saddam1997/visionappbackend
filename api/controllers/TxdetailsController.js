@@ -28,7 +28,6 @@ var companyBCHAccount = sails.config.company.companyBCHAccount;
 var companyBCHAccountAddress = sails.config.company.companyBCHAccountAddress;
 
 module.exports = {
-
   bchTransactionDetails: function(req, res) {
     console.log("Enter into bchTransactionDetails !!!");
     var txid = req.body.txid;

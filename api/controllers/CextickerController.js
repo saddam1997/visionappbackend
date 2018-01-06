@@ -6,7 +6,6 @@
  */
 var request = require('request');
 module.exports = {
-
   getChart: function(req, res, next) {
     console.log("Enter Into getChart!!! " + JSON.stringify(req.body));
     sails.log.info("Enter Into getChart!!! " + JSON.stringify(req.body));

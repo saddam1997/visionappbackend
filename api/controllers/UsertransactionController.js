@@ -15,7 +15,6 @@ var clientBTC = new bitcoinBTC.Client({
 var companyBTCAccount = sails.config.company.companyBTCAccount;
 var companyBTCAccountAddress = sails.config.company.companyBTCAccountAddress;
 
-
 //BCH Wallet Details
 var bitcoinBCH = require('bitcoin');
 var clientBCH = new bitcoinBCH.Client({
@@ -585,7 +584,6 @@ module.exports = {
       });
   },
   buyBCH: function(req, res, next) {
-
     console.log("Enter into buyBCH with ::: ");
     var userEmailId = req.body.userMailId;
     var userbuyAmountBTC = parseFloat(req.body.buyAmountBTC).toFixed(8);

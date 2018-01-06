@@ -6,7 +6,6 @@
  */
 var nodemailer = require('nodemailer');
 module.exports = {
-
   bch: function(req, res, next) {
     console.log("Enter into BCH request amount BCH");
     var userMailId = req.body.userMailId;
