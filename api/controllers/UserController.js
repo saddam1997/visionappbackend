@@ -34,12 +34,15 @@ var companyBCHAccount = sails.config.company.companyBCHAccount;
 var companyBCHAccountAddress = sails.config.company.companyBCHAccountAddress;
 
 var transporter = nodemailer.createTransport({
-  service: sails.config.company.service,
+  service: 'gmail',
   auth: {
-    user: sails.config.company.email,
-    pass: sails.config.company.password
+    user: 'wallet.bcc@gmail.com',
+    pass: 'boosters@123'
   }
 });
+
+var labeledprefixed = sails.config.company.labeledPrefixed;
+var labeledpostfixed = sails.config.company.labeledPostfixed;
 
 module.exports = {
   createNewUser: function(req, res) {
@@ -86,7 +89,9 @@ module.exports = {
         });
       }
       if (!user) {
+
         clientBTC.cmd('getnewaddress', useremailaddress, function(err, newBTCAddressForUser, resHeaders) {
+
           if (err) {
             console.log("Error from sendFromBCHAccount:: ");
             if (err.code && err.code == "ECONNREFUSED") {
@@ -107,6 +112,7 @@ module.exports = {
             });
           }
           console.log('New address created from newBTCAddressForUser :: ', newBTCAddressForUser);
+
           clientBCH.cmd('getnewaddress', useremailaddress, function(err, newBCHAddressForUser, resHeaders) {
             if (err) {
               console.log("Error from sendFromBCHAccount:: ");
@@ -192,7 +198,7 @@ module.exports = {
       var newCreatedPassword = Math.floor(100000 + Math.random() * 900000);
       console.log("newCreatedPassword :: " + newCreatedPassword);
       var mailOptions = {
-        from: sails.config.company.email,
+        from: 'wallet.bcc@gmail.com',
         to: userMailId,
         subject: 'Please reset your password',
         text: 'We heard that you lost your VCNPay password. Sorry about that! ' +
@@ -471,7 +477,7 @@ module.exports = {
           var newCreatedPassword = Math.floor(100000 + Math.random() * 900000);
           console.log("newCreatedPassword :: " + newCreatedPassword);
           var mailOptions = {
-            from: sails.config.company.email,
+            from: "wallet.bcc@gmail.com",
             to: userMailId,
             subject: 'Please reset your spending password',
             text: 'We heard that you lost your VCNPay spending password. Sorry about that! ' +
@@ -652,7 +658,7 @@ module.exports = {
       var createNewOTP = Math.floor(100000 + Math.random() * 900000);
       console.log("createNewOTP :: " + createNewOTP);
       var mailOptions = {
-        from: sails.config.company.email,
+        from: "wallet.bcc@gmail.com",
         to: user.email,
         subject: 'Please verify your email',
         text: 'Your otp to verify email ' + createNewOTP

@@ -61,7 +61,8 @@ module.exports = {
     sails.log.info("Enter into getCurrntPriceOfBTC");
     var options = {
       method: 'GET',
-      url: 'https://cex.io/api/ticker/BCH/BTC',
+      // url: 'https://cex.io/api/ticker/BCH/BTC',
+      url : 'https://cex.io/api/ticker/BTC/USD',
       headers: {
         accept: '*/*',
         'content-type': 'application/json',

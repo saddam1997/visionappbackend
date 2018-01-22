@@ -24,7 +24,6 @@ module.exports.company = {
 
   email: 'noreply@@visionex.io',
   password: 'visionex123',
-  service: 'zoho',
-
+  service: 'zoho'
 
 }
